@@ -11,8 +11,8 @@ ln -sf "/usr/share/zoneinfo/$MY_TIMEZONE" /etc/localtime
 
 hwclock --systohc
 
-pacman -Sy archlinux-keyring
-pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta NetworkManager
+pacman -Sy archlinux-keyring --needed
+pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta NetworkManager --needed
 
 nvim /etc/locale.gen +"echo 'Uncomment en_US.UTF-8'"
 locale-gen
@@ -38,7 +38,7 @@ if id "$MEDIA_USER" &>/dev/null; then
   echo "Skipping create user '$MEDIA_USER', already exists"
 else
   echo "Creating user '$MEDIA_USER'"
-  useradd -m "$MEDIA_USER
+  useradd -m "$MEDIA_USER"
 fi
 
 cd "/home/$MY_USER"
