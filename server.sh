@@ -12,7 +12,7 @@ ln -sf "/usr/share/zoneinfo/$MY_TIMEZONE" /etc/localtime
 hwclock --systohc
 
 pacman -Sy archlinux-keyring --needed
-pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta NetworkManager --needed
+pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta NetworkManager neovim --needed
 
 nvim /etc/locale.gen +"echo 'Uncomment en_US.UTF-8'"
 locale-gen
@@ -27,6 +27,8 @@ else
   useradd -m -G wheel -s /bin/zsh "$MY_USER"
   passwd "$MY_USER"
 fi
+
+EDITOR=nvim visudo
 
 mkdir -p "/home/$MY_USER/.ssh"
 curl "$PUBLIC_KEYS_SOURCE" >> "/home/$MY_USER/.ssh/authorized_keys"
