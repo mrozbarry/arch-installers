@@ -12,7 +12,7 @@ ln -sf "/usr/share/zoneinfo/$MY_TIMEZONE" /etc/localtime
 hwclock --systohc
 
 pacman -Sy archlinux-keyring
-pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta
+pacman -S git base-devel neovim syslinux sudo zsh openssh plasma-meta NetworkManager
 
 nvim /etc/locale.gen +"echo 'Uncomment en_US.UTF-8'"
 locale-gen
@@ -52,4 +52,5 @@ cd "/home/$MY_USER/emptty"
 sudo -u alex makepkg -i -s
 
 systemctl enable ssh
+systemctl enable NetworkManager
 systemctl enable emptty
